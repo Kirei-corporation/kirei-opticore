@@ -1,0 +1,305 @@
+/*
+ * KIREI OptiCore Website Styles
+ *
+ * Этот файл содержит стили для современного, технологичного дизайна
+ * сайта компании KIREI OptiCore. Использованы тёмные оттенки для фона,
+ * яркий красный акцент и неоновый голубой для второстепенных деталей.
+ * Шрифты: Poppins для заголовков, Inter для основного текста.
+ */
+
+/* Цветовые переменные */
+:root {
+  --bg-dark: #0a0a0a;      /* основной фон */
+  --bg-secondary: #1a1a1a; /* секции на черном фоне */
+  --accent-red: #d10027;   /* основной акцент – логотип, кнопки */
+  --accent-blue: #00fff2;  /* вторичный акцент – ссылки, выделения */
+  --text-light: #ffffff;   /* основной цвет текста */
+  --text-muted: #cccccc;   /* приглушённый текст */
+}
+
+/* Общие стили */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+/* Шапка */
+header {
+  background-color: var(--bg-dark);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Логотип */
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.logo-kirei {
+  color: var(--accent-red);
+}
+.logo-opticore {
+  color: var(--accent-blue);
+}
+
+/* Навигация */
+nav {
+  display: flex;
+  gap: 24px;
+}
+nav a {
+  color: var(--text-light);
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: var(--accent-red);
+}
+
+/* Кнопка призыва к действию */
+.cta-button {
+  background-color: var(--accent-red);
+  color: var(--text-light);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 600;
+  display: inline-block;
+  transition: background 0.3s;
+  margin-left: 20px;
+}
+.cta-button:hover {
+  background-color: var(--accent-blue);
+}
+.cta-button.primary {
+  margin-top: 10px;
+}
+
+/* Герой‑баннер */
+.hero {
+  position: relative;
+  min-height: 450px;
+  background-image: url('hero-bg-new.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.2rem;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+.hero-content h1 .highlight {
+  color: var(--accent-red);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+/* Секция услуг */
+.services {
+  background-color: var(--bg-secondary);
+  padding: 80px 20px;
+  text-align: center;
+}
+.services h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+  color: var(--accent-red);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.card {
+  background-color: var(--bg-dark);
+  border-radius: 12px;
+  padding: 30px 25px;
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-6px);
+}
+.card img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+  /* фоновая подложка для иконки, чтобы красный цвет был заметен */
+  padding: 12px;
+  background-color: #121212;
+  border-radius: 50%;
+  /* используем режим наложения и фильтр, чтобы красный цвет выделялся */
+  mix-blend-mode: screen;
+  filter: brightness(1.5);
+}
+.card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: var(--accent-red);
+}
+.card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Секция О нас */
+.about {
+  background-color: var(--bg-dark);
+  padding: 80px 20px;
+  text-align: center;
+}
+.about h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: var(--accent-red);
+}
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Секция Контакты */
+.contacts {
+  background-color: var(--bg-secondary);
+  padding: 80px 20px;
+  text-align: center;
+}
+.contacts h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: var(--accent-red);
+}
+.contacts p {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+.contacts form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.contacts input,
+.contacts textarea {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+.contacts input::placeholder,
+.contacts textarea::placeholder {
+  color: var(--text-muted);
+}
+.contacts textarea {
+  resize: vertical;
+  height: 120px;
+}
+.contacts button {
+  align-self: center;
+  margin-top: 10px;
+}
+
+/* Подвал */
+footer {
+  background-color: var(--bg-dark);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+  nav {
+    margin-top: 10px;
+    flex-basis: 100%;
+    justify-content: center;
+    gap: 16px;
+  }
+  .cta-button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .hero-content {
+    padding: 100px 20px;
+  }
+  .hero-content h1 {
+    font-size: 2.4rem;
+  }
+  .services .cards {
+    gap: 20px;
+  }
+  .card {
+    width: 100%;
+    max-width: 320px;
+  }
+}
