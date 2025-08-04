@@ -15,6 +15,8 @@
   --accent-blue: #00fff2;  /* вторичный акцент – ссылки, выделения */
   --text-light: #ffffff;   /* основной цвет текста */
   --text-muted: #cccccc;   /* приглушённый текст */
+  --top-bar-bg: #111111;   /* фон верхней панели */
+  --top-bar-text: #888888; /* цвет текста верхней панели */
 }
 
 /* Общие стили */
@@ -34,6 +36,44 @@ body {
 a {
   color: var(--accent-blue);
   text-decoration: none;
+}
+
+/* Верхняя информационная панель */
+.top-bar {
+  background-color: var(--top-bar-bg);
+  color: var(--top-bar-text);
+  font-size: 0.75rem;
+  padding: 6px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-info span {
+  margin-right: 20px;
+  position: relative;
+}
+
+.contact-info span:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 14px;
+  background-color: var(--accent-red);
+}
+
+/* Логотип-контейнер и изображение */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 42px;
+  width: auto;
 }
 
 /* Шапка */
