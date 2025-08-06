@@ -1,346 +1,437 @@
-/*
- * KIREI OptiCore Website Styles
- *
- * Этот файл содержит стили для современного, технологичного дизайна
- * сайта компании KIREI OptiCore. Использованы тёмные оттенки для фона,
- * яркий красный акцент и неоновый голубой для второстепенных деталей.
- * Шрифты: Poppins для заголовков, Inter для основного текста.
- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap');
 
-/* Цветовые переменные */
+/*
+ * Global variables
+ * Define the brand palette and typography once for consistency across the site.
+ */
 :root {
-  --bg-dark: #0a0a0a;      /* основной фон */
-  --bg-secondary: #1a1a1a; /* секции на черном фоне */
-  --accent-red: #d10027;   /* основной акцент – логотип, кнопки */
-  --accent-blue: #00fff2;  /* вторичный акцент – ссылки, выделения */
-  --text-light: #ffffff;   /* основной цвет текста */
-  --text-muted: #cccccc;   /* приглушённый текст */
-  --top-bar-bg: #111111;   /* фон верхней панели */
-  --top-bar-text: #888888; /* цвет текста верхней панели */
+  --color-bg: #0A0A0A; /* main page background */
+  --color-accent-red: #D10027; /* primary brand accent */
+  --color-accent-cyan: #00FFF2; /* secondary accent, use sparingly */
+  --color-text-primary: #F5F7FA; /* primary text color */
+  --color-text-secondary: #A9B0B8; /* secondary text color */
+  --color-card-bg: #1A1F25; /* background for cards and panels */
+  --border-radius: 6px;
 }
 
-/* Общие стили */
+/* Reset and base styles */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', Arial, sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
   line-height: 1.6;
 }
 
 a {
-  color: var(--accent-blue);
+  color: inherit;
   text-decoration: none;
 }
 
-/* Верхняя информационная панель */
+/* Utility container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Top bar with contact info */
 .top-bar {
-  background-color: var(--top-bar-bg);
-  color: var(--top-bar-text);
-  font-size: 0.75rem;
-  padding: 6px 40px;
+  background-color: #0D0D0D;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  padding: 8px 0;
+}
+.top-bar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-.contact-info span {
-  margin-right: 20px;
-  position: relative;
-}
-
-.contact-info span:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: -12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 14px;
-  background-color: var(--accent-red);
-}
-
-/* Логотип-контейнер и изображение */
-.logo-container {
+.top-bar span {
   display: flex;
   align-items: center;
+  gap: 5px;
+}
+.top-bar i {
+  color: var(--color-accent-red);
 }
 
-.logo-img {
-  /* Увеличиваем размер логотипа для лучшей читаемости на тёмном фоне */
-  height: 56px;
-  width: auto;
+/* Navigation */
+.navbar {
+  background-color: #0D0D0D;
 }
-
-/* Шапка */
-header {
-  background-color: var(--bg-dark);
-  padding: 20px 40px;
+.navbar .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  padding: 12px 0;
 }
-
-/* Логотип */
-.logo {
+.navbar .logo {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  font-size: 1.6rem;
+  color: var(--color-text-primary);
 }
-.logo-kirei {
-  color: var(--accent-red);
-}
-.logo-opticore {
-  color: var(--accent-blue);
-}
-
-/* Навигация */
-nav {
+.navbar .nav-menu {
+  list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 10px;
+  margin-left: auto;
 }
-nav a {
-  color: var(--text-light);
-  font-family: 'Inter', Arial, sans-serif;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-nav a:hover {
-  color: var(--accent-red);
-}
-
-/* Кнопка призыва к действию */
-.cta-button {
-  background-color: var(--accent-red);
-  color: var(--text-light);
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-family: 'Inter', Arial, sans-serif;
-  font-weight: 600;
+.navbar .nav-menu li a {
   display: inline-block;
-  transition: background 0.3s;
-  margin-left: 20px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-accent-red);
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  font-size: 0.9rem;
 }
-.cta-button:hover {
-  background-color: var(--accent-blue);
-}
-.cta-button.primary {
-  margin-top: 10px;
+.navbar .nav-menu li a:hover,
+.navbar .nav-menu li a:focus {
+  background-color: var(--color-accent-red);
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(209, 0, 39, 0.6);
 }
 
-/* Герой‑баннер */
+/* Hero section */
 .hero {
   position: relative;
-  min-height: 450px;
-  background-image: url('hero-bg-new.png');
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.85)), url('../images/hero-bg.png');
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  padding: 0 20px;
 }
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.65);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 120px 20px;
-  text-align: center;
-}
-
-.hero-content h1 {
+.hero h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 3.2rem;
-  margin: 0 0 20px;
+  font-size: 3rem;
   line-height: 1.2;
+  margin-bottom: 20px;
+}
+.hero p {
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  font-size: 1.1rem;
+}
+.hero .cta-button {
+  background-color: var(--color-accent-red);
+  color: #ffffff;
+  padding: 14px 32px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  display: inline-block;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.hero .cta-button:hover {
+  background-color: #b30020;
+  box-shadow: 0 0 12px rgba(209, 0, 39, 0.6);
 }
 
-.hero-content h1 .highlight {
-  color: var(--accent-red);
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  color: var(--text-muted);
-  margin-bottom: 30px;
-}
-
-/* Секция услуг */
-.services {
-  background-color: var(--bg-secondary);
-  padding: 80px 20px;
+/* Section headings */
+section h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: var(--color-accent-red);
   text-align: center;
 }
-.services h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.4rem;
-  margin-bottom: 40px;
-  color: var(--accent-red);
-}
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+/* Services grid */
+.services {
+  padding: 80px 0;
+  background-color: var(--color-bg);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
 }
-.card {
-  background-color: var(--bg-dark);
-  border-radius: 12px;
-  padding: 30px 25px;
-  width: 280px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s;
+.service-card {
+  background-color: var(--color-card-bg);
+  border-radius: var(--border-radius);
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.card:hover {
+.service-card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
-.card img {
-  width: 64px;
-  height: 64px;
+.service-card .icon {
+  font-size: 2.5rem;
   margin-bottom: 20px;
-  /* фоновая подложка для иконки, чтобы красный цвет был заметен */
-  padding: 12px;
-  background-color: #121212;
-  border-radius: 50%;
-  /* используем режим наложения и фильтр, чтобы красный цвет выделялся */
-  mix-blend-mode: screen;
-  filter: brightness(1.5);
+  color: var(--color-accent-red);
 }
-.card h3 {
+.service-card h3 {
   font-family: 'Poppins', sans-serif;
   font-size: 1.3rem;
-  margin-top: 0;
-  margin-bottom: 12px;
-  color: var(--accent-red);
+  margin-bottom: 15px;
 }
-.card p {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin: 0;
+.service-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
 }
 
-/* Секция О нас */
-.about {
-  background-color: var(--bg-dark);
-  padding: 80px 20px;
+/* Steps / How we work */
+.steps {
+  padding: 80px 0;
+  background-color: var(--color-card-bg);
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  counter-reset: step;
+}
+.step-item {
+  position: relative;
+  padding: 40px 20px;
+  background-color: var(--color-bg);
+  border-radius: var(--border-radius);
   text-align: center;
+  color: var(--color-text-secondary);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.about h2 {
+.step-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+.step-item::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-accent-red);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  font-weight: 600;
+  box-shadow: 0 0 6px rgba(209, 0, 39, 0.6);
+}
+.step-item h4 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-  color: var(--accent-red);
-}
-.about p {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 1rem;
-  color: var(--text-muted);
-}
-
-/* Секция Контакты */
-.contacts {
-  background-color: var(--bg-secondary);
-  padding: 80px 20px;
-  text-align: center;
-}
-.contacts h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-  color: var(--accent-red);
-}
-.contacts p {
-  max-width: 600px;
-  margin: 0 auto 30px;
-  font-size: 1rem;
-  color: var(--text-muted);
-}
-.contacts form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-.contacts input,
-.contacts textarea {
-  padding: 12px 15px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-}
-.contacts input::placeholder,
-.contacts textarea::placeholder {
-  color: var(--text-muted);
-}
-.contacts textarea {
-  resize: vertical;
-  height: 120px;
-}
-.contacts button {
-  align-self: center;
+  font-size: 1.1rem;
   margin-top: 10px;
+  margin-bottom: 10px;
+  color: var(--color-text-primary);
 }
-
-/* Подвал */
-footer {
-  background-color: var(--bg-dark);
-  color: var(--text-muted);
-  text-align: center;
-  padding: 20px;
+.step-item p {
   font-size: 0.85rem;
 }
 
-/* Адаптивность */
+/* Advantages section */
+.advantages {
+  padding: 60px 0;
+  background-color: var(--color-bg);
+}
+.advantages-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.advantage {
+  background-color: var(--color-card-bg);
+  padding: 20px 25px;
+  border-radius: var(--border-radius);
+  flex: 1 1 200px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.advantage i {
+  font-size: 1.5rem;
+  color: var(--color-accent-red);
+}
+.advantage span {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+/* CTA section */
+.cta-section {
+  padding: 80px 0;
+  text-align: center;
+  background-color: var(--color-card-bg);
+}
+.cta-section h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+}
+.cta-section p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+.cta-section .cta-button {
+  background-color: var(--color-accent-red);
+  color: #ffffff;
+  padding: 14px 36px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.cta-section .cta-button:hover {
+  background-color: #b30020;
+  box-shadow: 0 0 12px rgba(209, 0, 39, 0.6);
+}
+
+/* Footer */
+footer {
+  background-color: #0D0D0D;
+  padding: 40px 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+footer .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+footer .footer-links a {
+  color: var(--color-text-secondary);
+  transition: color 0.3s;
+  font-size: 0.9rem;
+}
+footer .footer-links a:hover {
+  color: var(--color-accent-red);
+}
+footer .legal {
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+/* Pricing table */
+.pricing {
+  padding: 80px 0;
+  background-color: var(--color-bg);
+}
+.pricing-table {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+.pricing-table th,
+.pricing-table td {
+  border: 1px solid #2a2a2a;
+  padding: 16px;
+  text-align: left;
+}
+.pricing-table th {
+  background-color: var(--color-card-bg);
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-text-primary);
+}
+.pricing-table tr:nth-child(even) {
+  background-color: #13181f;
+}
+.pricing-table tr:nth-child(odd) {
+  background-color: #0f131a;
+}
+.pricing-table td.price {
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-accent-red);
+  font-weight: 600;
+}
+.pricing-table td .btn-subscribe {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  background-color: var(--color-accent-red);
+  color: #ffffff;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+.pricing-table td .btn-subscribe:hover {
+  background-color: #b30020;
+}
+
+/* Contact form */
+.contact-section {
+  padding: 80px 0;
+  background-color: var(--color-card-bg);
+}
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  padding: 12px 15px;
+  background-color: #0e131a;
+  border: 1px solid #2a2a2a;
+  border-radius: var(--border-radius);
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.contact-form button {
+  align-self: flex-start;
+  background-color: var(--color-accent-red);
+  color: #ffffff;
+  padding: 12px 30px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.3s;
+}
+.contact-form button:hover {
+  background-color: #b30020;
+}
+
+/* Simple page layout spacing */
+.section {
+  padding: 80px 0;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  header {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 15px 20px;
+  .hero {
+    height: 500px;
   }
-  nav {
-    margin-top: 10px;
-    flex-basis: 100%;
-    justify-content: center;
-    gap: 16px;
+  .hero h1 {
+    font-size: 2.3rem;
   }
-  .cta-button {
-    margin-left: 0;
-    margin-top: 10px;
+  .hero p {
+    font-size: 0.95rem;
   }
-  .hero-content {
-    padding: 100px 20px;
+  .navbar .nav-menu li a {
+    padding: 6px 10px;
+    font-size: 0.8rem;
   }
-  .hero-content h1 {
-    font-size: 2.4rem;
-  }
-  .services .cards {
-    gap: 20px;
-  }
-  .card {
-    width: 100%;
-    max-width: 320px;
+  .pricing-table th,
+  .pricing-table td {
+    padding: 12px;
   }
 }
